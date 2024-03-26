@@ -1,21 +1,18 @@
-import requests
-import pandas as pd
 from bs4 import BeautifulSoup
 import os
 import shutil
 import urllib
-import schedule
 import time
 import smtplib
-from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from email.mime.base import MIMEBase
 from email import encoders
 import datetime
+from security import safe_requests
 
 def job(searchString):
     searchUrl = "https://www.google.com/search?q="+searchString+"&source=lnms&tbm=isch"
-    result = requests.get(searchUrl)
+    result = safe_requests.get(searchUrl)
 
 # if successful parse the download into a BeautifulSoup object, which allows easy manipulation
     if result.status_code == 200:
