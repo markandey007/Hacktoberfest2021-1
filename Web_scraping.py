@@ -15,7 +15,7 @@ import datetime
 
 def job(searchString):
     searchUrl = "https://www.google.com/search?q="+searchString+"&source=lnms&tbm=isch"
-    result = requests.get(searchUrl)
+    result = requests.get(searchUrl, timeout=60)
 
 # if successful parse the download into a BeautifulSoup object, which allows easy manipulation
     if result.status_code == 200:
